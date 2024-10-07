@@ -11,15 +11,18 @@ const Product = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
 
-  if (!product) {
-    return <h2>No se ha encontrado el producto</h2>;
-  }
-
   return (
-    <div style={{ marginTop: '20px' }}>
-      <h2>{product.nombre}</h2>
-      <p>Precio: ${product.precio}</p>
-    </div>
+    <>
+    {product && (
+        <div style={{ marginTop: '20px' }}>
+            <h2>{product.nombre}</h2>
+            <p>Precio: ${product.precio}</p>
+        </div>
+    )}
+    {!product && (
+        <h2>No se ha encontrado el producto</h2>
+    )}
+    </>
   );
 };
 
